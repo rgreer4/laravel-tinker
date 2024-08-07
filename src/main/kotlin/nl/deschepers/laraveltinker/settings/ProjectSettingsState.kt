@@ -16,6 +16,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 class ProjectSettingsState : PersistentStateComponent<ProjectSettingsState> {
     var laravelRoot = ""
     var vendorRoot = ""
+    var composerFilename = "composer.json"
     var terminateApp = false
 
     companion object {
@@ -39,8 +40,13 @@ class ProjectSettingsState : PersistentStateComponent<ProjectSettingsState> {
             this.vendorRoot = this.laravelRoot
         }
 
+        if (this.composerFilename.isEmpty()) {
+            this.composerFilename = "composer.json"
+        }
+
         settingsObject.addProperty("laravelRoot", this.laravelRoot)
         settingsObject.addProperty("vendorRoot", this.vendorRoot)
+        settingsObject.addProperty("composerFilename", this.composerFilename)
         settingsObject.addProperty("terminateApp", this.terminateApp)
         return settingsObject
     }
