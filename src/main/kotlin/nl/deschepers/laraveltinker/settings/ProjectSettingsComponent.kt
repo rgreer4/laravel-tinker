@@ -14,6 +14,7 @@ class ProjectSettingsComponent {
     private var settingsPanel: JPanel
     private val laravelRootTextField = TextFieldWithBrowseButton()
     private val vendorRootTextField = TextFieldWithBrowseButton()
+    private val composerFilenameTextField = JBTextField()
     private val terminateAppCheckBox = JBCheckBox(Strings.get("lt.settings.terminate_app"))
 
     var laravelRoot: String
@@ -25,6 +26,11 @@ class ProjectSettingsComponent {
         get() = this.vendorRootTextField.text
         set(value) {
             this.vendorRootTextField.text = value
+        }
+    var composerFilename: String
+        get() = this.composerFilenameTextField.text
+        set(value) {
+            this.composerFilenameTextField.text = value
         }
     var terminateApp: Boolean
         get() = this.terminateAppCheckBox.isSelected
@@ -54,6 +60,7 @@ class ProjectSettingsComponent {
                 .addTooltip(Strings.get("lt.settings.laravel_root.tooltip1"))
                 .addTooltip(Strings.get("lt.settings.laravel_root.tooltip2"))
                 .addTooltip(Strings.get("lt.settings.laravel_root.tooltip3"))
+                .addComponent(composerFilenameTextField)
                 .addComponent(terminateAppCheckBox)
                 .addComponentFillVertically(JPanel(), 0)
                 .panel
