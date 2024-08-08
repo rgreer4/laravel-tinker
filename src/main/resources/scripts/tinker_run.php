@@ -11,7 +11,7 @@ echo "%%START-OUTPUT%%";
 
 $projectSettings = json_decode($argv[2]) ?? new stdClass();
 
-$composerJsonFile = ($projectSettings->vendorRoot ?: __DIR__) . '/composer.json';
+$composerJsonFile = ($projectSettings->vendorRoot ?: __DIR__) . '/'. ($projectSettings->composerFilename ?: 'composer.json');
 if (!file_exists($composerJsonFile)) {
     throw new Exception($composerJsonFile . ' does not exist. Please check your project settings.');
 }

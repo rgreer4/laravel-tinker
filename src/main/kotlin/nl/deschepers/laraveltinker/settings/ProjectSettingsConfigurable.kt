@@ -17,7 +17,8 @@ class ProjectSettingsConfigurable(private var project: Project) : Configurable {
         val projectSettings = ProjectSettingsState.getInstance(project)
         return projectSettingsComponent!!.laravelRoot != projectSettings.laravelRoot ||
             projectSettingsComponent!!.terminateApp != projectSettings.terminateApp ||
-            projectSettingsComponent!!.vendorRoot != projectSettings.vendorRoot
+            projectSettingsComponent!!.vendorRoot != projectSettings.vendorRoot ||
+            projectSettingsComponent!!.composerFilename != projectSettings.composerFilename
     }
 
     override fun apply() {
@@ -25,6 +26,7 @@ class ProjectSettingsConfigurable(private var project: Project) : Configurable {
         projectSettings.laravelRoot = projectSettingsComponent!!.laravelRoot
         projectSettings.terminateApp = projectSettingsComponent!!.terminateApp
         projectSettings.vendorRoot = projectSettingsComponent!!.vendorRoot
+        projectSettings.composerFilename = projectSettingsComponent!!.composerFilename
     }
 
     override fun reset() {
@@ -32,6 +34,7 @@ class ProjectSettingsConfigurable(private var project: Project) : Configurable {
         projectSettingsComponent!!.laravelRoot = projectSettings.laravelRoot
         projectSettingsComponent!!.terminateApp = projectSettings.terminateApp
         projectSettingsComponent!!.vendorRoot = projectSettings.vendorRoot
+        projectSettingsComponent!!.composerFilename = projectSettings.composerFilename
     }
 
     override fun getDisplayName(): String {
